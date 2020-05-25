@@ -42,6 +42,8 @@ public class HomeFragment extends Fragment {
 
             }
 
+
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
