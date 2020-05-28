@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_reminder"
-        android:name="com.health.healthapp.ui.notifications.NotificationsFragment"
+        android:name="com.health.healthapp.ui.card.Reminder_fragment"
         android:label="@string/title_group"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
