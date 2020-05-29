@@ -26,18 +26,19 @@ public class Reminder_fragment extends Fragment {
     MyRecyclerAdapter adapter;
     Button btnAdd;
     View root;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-       root = inflater.inflate(R.layout.fragment_card, container, false);
+        root = inflater.inflate(R.layout.fragment_card, container, false);
         models = new ArrayList<>();
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
-        models.add(new CardModel("BloodPressure","Daily- 8:00","7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new MyRecyclerAdapter(getActivity(),models);
+        adapter = new MyRecyclerAdapter(getActivity(), models);
         RecyclerView.LayoutManager LManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemAnimator animator = new DefaultItemAnimator();
 
@@ -46,19 +47,21 @@ public class Reminder_fragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         initViews();
-        //controlView();
+        controlView();
         return root;
     }
+
     private void initViews() {
-        btnAdd =root.findViewById(R.id.btn_add);
-    }
-//    private void controlView() {
-//        btnAdd.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getContext() ,AddMedication_fragment.class );
-//                startActivity(intent);
-//            }
-//        });
+        btnAdd = root.findViewById(R.id.btn_add);
     }
 
+    private void controlView() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Add.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
