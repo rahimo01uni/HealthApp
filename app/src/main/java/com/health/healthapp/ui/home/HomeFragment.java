@@ -30,8 +30,6 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         tabLayout=root.findViewById(R.id.home_tab);
         text=root.findViewById(R.id.home);
-        all_view=root.findViewById(R.id.recyclerView);
-        all_view.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -43,6 +41,8 @@ public class HomeFragment extends Fragment {
             public void onTabUnselected(TabLayout.Tab tab) {
 
             }
+
+
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
