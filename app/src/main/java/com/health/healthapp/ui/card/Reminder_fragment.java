@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.health.healthapp.Adapter.MyRecyclerAdapter;
 import com.health.healthapp.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,10 +91,22 @@ public class Reminder_fragment extends Fragment {
        builder.setTitle("Add a new element");
 
       // add a list
+       final View customLayout = getLayoutInflater().inflate(R.layout.alert, null);
+       builder.setView(customLayout);
+       TextView txt_medication= customLayout.findViewById(R.id.txt_medication);
 
-       builder.setItems(items, new DialogInterface.OnClickListener() {
+       txt_medication.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getContext(), Add.class);
+                                    startActivity(intent);
+                                }
+                            });
+
+       /*builder.setItems(items, new DialogInterface.OnClickListener() {
            @Override
            public void onClick(DialogInterface dialog, int which) {
+
                switch (which) {
                    case 0: Intent intent = new Intent(getContext(), Add.class);
                            startActivity(intent);
@@ -102,7 +116,7 @@ public class Reminder_fragment extends Fragment {
                }
            }
        });
-
+*/
        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
            @Override
            public void onClick(DialogInterface dialog, int i) {
