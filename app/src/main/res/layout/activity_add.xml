@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.card.Add">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +24,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
 
         <TextView
             android:id="@+id/txtname"
@@ -260,9 +270,17 @@
             android:scrollbarThumbVertical="@color/colorPrimaryDark"
             android:text="Save"
             android:textColor="@android:color/white" />
+        <View
 
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
     </LinearLayout>
 
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
