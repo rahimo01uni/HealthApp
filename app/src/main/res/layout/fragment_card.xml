@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.card.Reminder_fragment">
+    tools:context=".ui.Reminder.Reminder_fragment">
 
     <Button
         android:id="@+id/btn_add"

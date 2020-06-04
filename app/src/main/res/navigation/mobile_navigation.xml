@@ -19,12 +19,12 @@
 
     <fragment
         android:id="@+id/navigation_group"
-        android:name="com.health.healthapp.ui.notifications.NotificationsFragment"
+        android:name="com.health.healthapp.ui.Team.Listgroup_fragment"
         android:label="@string/title_group"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_reminder"
-        android:name="com.health.healthapp.ui.card.Reminder_fragment"
+        android:name="com.health.healthapp.ui.Reminder.Reminder_fragment"
         android:label="@string/title_group"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
