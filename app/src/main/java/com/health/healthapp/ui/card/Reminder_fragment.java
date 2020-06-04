@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.health.healthapp.Adapter.MyRecyclerAdapter;
 import com.health.healthapp.R;
+import com.health.healthapp.ui.medication.Addmedication;
 
 import org.w3c.dom.Text;
 
@@ -78,15 +79,9 @@ public class Reminder_fragment extends Fragment {
 
    public void openDialog(){
 
-//       final Item[] items2 = {
-//               new Item("Email", android.R.drawable.ic_menu_add),
-//               new Item("Facebook", android.R.drawable.ic_menu_delete),
-//               new Item("...", 0),//no icon for this one
-//       };
 
 
-       String[] items = {"Medication", "Measurement", "Activity", "symptom Check"};
-       Integer[] icons = new Integer[] {R.drawable.remove, R.drawable.calender};
+
        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
        builder.setTitle("Add a new element");
 
@@ -98,25 +93,12 @@ public class Reminder_fragment extends Fragment {
        txt_medication.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Intent intent = new Intent(getContext(), Add.class);
+                                    Intent intent = new Intent(getContext(), Addmedication.class);
                                     startActivity(intent);
                                 }
                             });
 
-       /*builder.setItems(items, new DialogInterface.OnClickListener() {
-           @Override
-           public void onClick(DialogInterface dialog, int which) {
 
-               switch (which) {
-                   case 0: Intent intent = new Intent(getContext(), Add.class);
-                           startActivity(intent);
-                   case 1: // Measurement
-                   case 2: // Activity
-                   case 3: // symptom
-               }
-           }
-       });
-*/
        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
            @Override
            public void onClick(DialogInterface dialog, int i) {

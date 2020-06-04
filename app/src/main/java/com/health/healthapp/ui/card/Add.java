@@ -13,4 +13,8 @@ public class Add extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
