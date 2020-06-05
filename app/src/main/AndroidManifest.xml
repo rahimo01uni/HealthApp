@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Team.Addgroup"></activity>
+        <activity android:name=".ui.Team.EditMemList"></activity>
+        <activity android:name=".ui.Team.Memberlist" />
+        <activity android:name=".ui.Team.Addgroup" />
         <activity android:name=".ui.Team.Listgroup_fragment" />
         <activity android:name=".ui.medication.Addmedication" />
         <activity android:name=".ui.Reminder.Add" />

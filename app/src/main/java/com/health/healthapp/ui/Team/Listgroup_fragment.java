@@ -23,6 +23,7 @@ public class Listgroup_fragment extends Fragment {
     List<Group> lstGroup;
     View root;
    FloatingActionButton btnAdd;
+    FloatingActionButton btnMemList;
 
 
     @Override
@@ -48,6 +49,7 @@ public class Listgroup_fragment extends Fragment {
 
     private void initViews() {
         btnAdd = root.findViewById(R.id.btnAdd);
+        btnMemList = root.findViewById(R.id.btn_memlist);
     }
 
     private void controlView() {
@@ -55,6 +57,15 @@ public class Listgroup_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Addgroup.class);
+                startActivity(intent);
+
+            }
+        });
+
+        btnMemList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Memberlist.class);
                 startActivity(intent);
 
             }
