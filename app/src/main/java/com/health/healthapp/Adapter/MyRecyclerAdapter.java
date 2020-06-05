@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.health.healthapp.R;
-import com.health.healthapp.ui.card.CardModel;
+import com.health.healthapp.ui.Reminder.CardModel;
 
 import java.util.List;
 

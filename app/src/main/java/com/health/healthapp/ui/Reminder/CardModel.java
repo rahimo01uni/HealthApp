@@ -1,4 +1,4 @@
-package com.health.healthapp.ui.card;
+package com.health.healthapp.ui.Reminder;
 
 public class CardModel {
     private String title, remider,leftdays;
