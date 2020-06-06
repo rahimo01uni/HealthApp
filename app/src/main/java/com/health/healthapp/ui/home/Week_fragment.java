@@ -5,12 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,14 +25,14 @@ import com.health.healthapp.R;
 import com.health.healthapp.ui.medication.Addmedication;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
 
-public class Wyear_fragment extends Fragment implements SearchView.OnQueryTextListener,SlyCalendarDialog.Callback {
+public class Week_fragment extends Fragment implements SearchView.OnQueryTextListener,SlyCalendarDialog.Callback {
 
     RecyclerView recyclerView;
    ArrayList<LogModel> models;
@@ -39,8 +40,9 @@ Adapter adapter;
  //   Button btnAdd;
     View root;
     FloatingActionButton btn;
-   DatabaseHelper db;
+    DatabaseHelper db;
     SearchView editsearch;
+    ImageView calendar;
    public static Handler visible;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -53,17 +55,18 @@ Adapter adapter;
         models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
         models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
         models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
+        initViews();
+        controlView();
+        return root;
+    }
 
+    private void initViews() {
+        //btnAdd = root.findViewById(R.id.btn_add);
+        calendar=root.findViewById(R.id.calendar);
         editsearch = root.findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
         editsearch.setMinimumHeight(0);
-        visible=new Handler(){
-            @Override
-            public void handleMessage(@NonNull Message msg) {
 
-                    editsearch.setMinimumHeight(50);
-            }
-        };
         db=new DatabaseHelper(getActivity());
         recyclerView = root.findViewById(R.id.recyclerView);
         btn=root.findViewById(R.id.today_btn);
@@ -74,27 +77,25 @@ Adapter adapter;
         recyclerView.setLayoutManager(LManager);
         recyclerView.setItemAnimator((animator));
         recyclerView.setAdapter(adapter);
-
-        initViews();
-        controlView();
-        return root;
-    }
-
-    private void initViews() {
-        //btnAdd = root.findViewById(R.id.btn_add);
     }
 
     private void controlView() {
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SlyCalendarDialog()
+                        .setSingle(false)
+                        .setCallback(Week_fragment.this)
+                        .show(getActivity().getSupportFragmentManager(), "TAG_SLYCALENDAR");
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(getContext(), Add.class);
                 //startActivity(intent);
-                //   openDialog();
-                new SlyCalendarDialog()
-                        .setSingle(false)
-                        .setCallback(Wyear_fragment.this)
-                        .show(getActivity().getSupportFragmentManager(), "TAG_SLYCALENDAR");
+              openDialog();
+
             }
         });
     }
@@ -167,6 +168,29 @@ Adapter adapter;
 
     @Override
     public void onDataSelected(Calendar firstDate, Calendar secondDate, int hours, int minutes) {
+        if (firstDate != null) {
+            if (secondDate == null) {
+                firstDate.set(Calendar.HOUR_OF_DAY, hours);
+                firstDate.set(Calendar.MINUTE, minutes);
+                Toast.makeText(
+                        getActivity(),
+                        new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault()).format(firstDate.getTime()),
+                        Toast.LENGTH_LONG
+
+                ).show();
+            } else {
+                Toast.makeText(
+                        getActivity(),
+                        getString(
+                                R.string.period,
+                                new SimpleDateFormat(getString(R.string.dateFormat), Locale.getDefault()).format(firstDate.getTime()),
+                                new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault()).format(secondDate.getTime())
+                        ),
+                        Toast.LENGTH_LONG
+
+                ).show();
+            }
+        }
 
     }
 }
