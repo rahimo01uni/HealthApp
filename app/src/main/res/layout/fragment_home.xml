@@ -30,23 +30,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Month" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Year" />
     </com.google.android.material.tabs.TabLayout>
 
-    <TextView
-        android:id="@+id/home"
-
-        android:layout_width="165dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/home_tab">
-
-    </TextView>
+        app:layout_constraintTop_toTopOf="@+id/home_tab" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

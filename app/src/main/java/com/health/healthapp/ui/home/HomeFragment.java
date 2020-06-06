@@ -13,30 +13,41 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.health.healthapp.R;
+import com.health.healthapp.ui.Reminder.Reminder_fragment;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     TabLayout tabLayout;
     TextView text;
+    ViewPager viewPager;
     RecyclerView  all_view;
+    SectionsPagerAdapter sectionsPagerAdapter;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         tabLayout=root.findViewById(R.id.home_tab);
-        text=root.findViewById(R.id.home);
-        all_view=root.findViewById(R.id.recyclerView);
-        all_view.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-
+       // text=root.findViewById(R.id.home);
+      //  all_view=root.findViewById(R.id.recyclerView);
+       //all_view.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        sectionsPagerAdapter = new SectionsPagerAdapter(getActivity().getSupportFragmentManager());
+        viewPager = root.findViewById(R.id.viewpager);
+        sectionsPagerAdapter.AddFragment(new Today_fragment(), "Today");
+        sectionsPagerAdapter.AddFragment(new Wyear_fragment(), "Week");
+        sectionsPagerAdapter.AddFragment(new Reminder_fragment(), "Month");
+        sectionsPagerAdapter.AddFragment(new Reminder_fragment(), "Year");
+        viewPager.setAdapter(sectionsPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                  text.setText(""+tab.getText());
+//                  text.setText(""+tab.getText());
             }
 
             @Override
@@ -59,4 +70,5 @@ public class HomeFragment extends Fragment {
 
 
     }
+
 }

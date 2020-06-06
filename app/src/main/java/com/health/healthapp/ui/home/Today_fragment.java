@@ -1,4 +1,4 @@
-package com.health.healthapp.ui.Reminder;
+package com.health.healthapp.ui.home;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,16 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.health.healthapp.Adapter.MyRecyclerAdapter;
-import com.health.healthapp.R;
-import com.health.healthapp.ui.medication.Addmedication;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,26 +16,42 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Reminder_fragment extends Fragment {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.health.healthapp.Adapter.MyRecyclerAdapter;
+import com.health.healthapp.Database.DatabaseHelper;
+import com.health.healthapp.R;
+import com.health.healthapp.ui.Reminder.CardModel;
+import com.health.healthapp.ui.medication.Addmedication;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Today_fragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<CardModel> models;
-    MyRecyclerAdapter adapter;
-    Button btnAdd;
+    List<LogModel> models;
+Adapter adapter;
+ //   Button btnAdd;
     View root;
+    FloatingActionButton btn;
+DatabaseHelper db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_reminder, container, false);
+        root = inflater.inflate(R.layout.fragment_today, container, false);
         models = new ArrayList<>();
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
-        models.add(new CardModel("BloodPressure", "Daily- 8:00", "7 Days"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",R.drawable.bloodicon,"1"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",R.drawable.mood_icon,"-1"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",1,"0"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
+        models.add(new LogModel("BloodPressure", "Measurements", "08:08",0,"-1"));
+        db=new DatabaseHelper(getActivity());
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new MyRecyclerAdapter(getActivity(), models);
+        btn=root.findViewById(R.id.today_btn);
+        adapter = new Adapter(getActivity(), models);
         RecyclerView.LayoutManager LManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemAnimator animator = new DefaultItemAnimator();
 
@@ -57,11 +65,11 @@ public class Reminder_fragment extends Fragment {
     }
 
     private void initViews() {
-        btnAdd = root.findViewById(R.id.btn_add);
+        //btnAdd = root.findViewById(R.id.btn_add);
     }
 
     private void controlView() {
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+       btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(getContext(), Add.class);
