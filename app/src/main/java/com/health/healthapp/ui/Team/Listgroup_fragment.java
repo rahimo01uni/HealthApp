@@ -32,9 +32,9 @@ public class Listgroup_fragment extends Fragment {
         root = inflater.inflate(R.layout.activity_listgroup, container, false);
 
         lstGroup = new ArrayList<>();
-        lstGroup.add(new Group("Doctors", R.drawable.share_icon));
-        lstGroup.add(new Group("Family", R.drawable.share_icon));
-        lstGroup.add(new Group("Friends", R.drawable.share_icon));
+        lstGroup.add(new Group("Doctors", R.drawable.ic_share_black_24dp));
+        lstGroup.add(new Group("Family", R.drawable.ic_share_black_24dp));
+        lstGroup.add(new Group("Friends", R.drawable.ic_share_black_24dp));
 
         RecyclerView myrv = root.findViewById(R.id.recycleView_group);
         GroupRecycleviewAdapter myAdapter = new GroupRecycleviewAdapter(getActivity(), lstGroup);
