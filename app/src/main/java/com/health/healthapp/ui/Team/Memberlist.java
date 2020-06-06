@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +26,8 @@ public class Memberlist extends AppCompatActivity implements MemberRecycleviewAd
     RecyclerView recyclerView;
     List<GroupMember> models;
     MemberRecycleviewAdapter adapter;
-    FloatingActionButton btnAddLog, btnCloselog;
+    FloatingActionButton btnAddLog;
+    ImageView btnCloselog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
