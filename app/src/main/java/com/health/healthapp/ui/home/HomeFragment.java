@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -39,9 +36,9 @@ public class HomeFragment extends Fragment {
         sectionsPagerAdapter = new SectionsPagerAdapter(getActivity().getSupportFragmentManager());
         viewPager = root.findViewById(R.id.viewpager);
         sectionsPagerAdapter.AddFragment(new Today_fragment(), "Today");
-        sectionsPagerAdapter.AddFragment(new Wyear_fragment(), "Week");
-        sectionsPagerAdapter.AddFragment(new Reminder_fragment(), "Month");
-        sectionsPagerAdapter.AddFragment(new Reminder_fragment(), "Year");
+        sectionsPagerAdapter.AddFragment(new Week_fragment(), "Week");
+        sectionsPagerAdapter.AddFragment(new Month_fragment(), "Month");
+        sectionsPagerAdapter.AddFragment(new Year_fragment(), "Year");
         viewPager.setAdapter(sectionsPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

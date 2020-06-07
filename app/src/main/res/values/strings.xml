@@ -13,10 +13,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-
         <string name="alert_unit">Choice your Unit</string>
-
         <string-array name="unit_item">
             <item>Pill(s)</item>
             <item>A</item>
@@ -24,6 +21,7 @@
             <item>C</item>
             <item>D</item>
         </string-array>
-
-
+    <string name="dateFormat" translatable="false">EE, dd MMM</string>
+    <string name="timeFormat" translatable="false">EE, dd MMM HH:mm</string>
+    <string name="period" translatable="false">%1$s – %2$s</string>
 </resources>
